@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="spreadsheet" type="text/class" href="style.css">
+    <style>
+        /* General body styles */
+        body {
+            background-color: rgb(155, 199, 153);
+
+        }
+
+
+        /* Styling for navigation buttons */
+        .navbtn {
+            background-color: rgb(227, 161, 197);
+            background-image: none;
+            color: #fff;
+            cursor: pointer;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+                Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+            font-size: 100%;
+            font-weight: 900;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            border-radius: 99rem;
+            border-width: 2px;
+            padding: 0.8rem 3rem;
+        }
+        .navbtn:hover {
+            background-color: rgb(237, 197, 219);
+        }
+
+        /* Centered content for radio buttons and label */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            flex-direction: column;
+            
+        }
+
+        /* Wrapper for the radio buttons */
+        .wrapper {
+            --font-color-dark: #fefefe;
+            --font-color-light: #111;
+            --bg-color: #111;
+            --main-color: #fefefe;
+            position: relative;
+            width: 250px;
+            height: 36px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--main-color);
+            border-radius: 34px;
+            display: flex;
+            flex-direction: row;
+            box-shadow: 4px 4px var(--main-color);
+            margin: 15px;
+            transition: width 0.3s ease, background-color 0.3s ease; /* Smooth transition for width & background */
+
+        }
+
+        .option {
+            width: 80.5px;
+            height: 28px;
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+
+        .input {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .span {
+            color: var(--font-color-dark);
+        }
+
+        .input:checked + .btn {
+            background-color: var(--main-color);
+        }
+
+        .input:checked + .btn .span {
+            color: var(--font-color-light);
+        }
+
+        /* Label positioning */
+        .brutalist-label {
+            position: absolute;
+            left: -3px;
+            top: -35px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #000;
+            padding: 5px 10px;
+            transform: rotate(-1deg);
+            z-index: 1;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div>
+        <h1>Holiday Hackers</h1>
+        <div style="float: right; margin-top: 20px;">
+            <button class="navbtn" onclick="window.location.href='dest.html'">
+                Destinations
+            </button>
+            <button class="navbtn" onclick="window.location.href='quiz_home.html'">
+                Quiz
+            </button>
+        </div>
+    </div>
+
+    <!-- Centered Radio Buttons and Label -->
+
+    <div class="center-container" style="padding-top: 10%;">
+        <div class="wrapper">
+            <div class="option">
+                <input checked="" value="option1" name="duration" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> 2 Days </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option2" name="duration" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> 5 Days</span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option3" name="duration" type="radio" class="input">
+                <div class="btn">
+                    <span class="span">1 Week</span>
+                </div>
+            </div>
+            <label class="brutalist-label">I'm looking for a trip duration of....</label>
+        </div>
+        <br>
+        <br>
+        <div class="wrapper">
+            <div class="option">
+                <input checked="" value="option1" name="trip-type" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Tropical </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option2" name="trip-type" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Urban </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option3" name="trip-type" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Scenic </span>
+                </div>
+            </div>
+            <label class="brutalist-label">I prefer destinations that are...</label>
+        </div>
+        <br>
+        <br>
+        <div class="wrapper">
+            <div class="option">
+                <input checked="" value="option1" name="activity" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Relaxing  </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option2" name="activity" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Educational  </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option3" name="activity" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Thrilling</span>
+                </div>
+            </div>
+            <label class="brutalist-label">I would describe my idea of fun as....</label>
+        </div>
+        <br>
+        <br>
+        <div class="wrapper">
+            <div class="option">
+                <input checked="" value="option1" name="budget" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Limited </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option2" name="budget" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Adjustable  </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option3" name="budget" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Open </span>
+                </div>
+            </div>
+            <label class="brutalist-label"> My budget is...</label>
+        </div>
+        <br>
+        <br>
+        <div class="wrapper">
+            <div class="option">
+                <input checked="" value="option1" name="distance" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Nearby </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option2" name="distance" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Far Away  </span>
+                </div>
+            </div>
+            <div class="option">
+                <input value="option3" name="distance" type="radio" class="input">
+                <div class="btn">
+                    <span class="span"> Anywhere </span>
+                </div>
+            </div>
+            <label class="brutalist-label"> I'm looking to travel...</label>
+        </div>
+
+    </div>
+    
+
+    
+
+</body>
+</html>
