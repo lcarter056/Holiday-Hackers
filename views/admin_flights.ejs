@@ -240,35 +240,19 @@
         }
 
     </style>
-    <script>
-        // Function to update the styled-text div when a flight is selected
-        function updateEdit(flightNumber) {
-            // Get the element with the id "styled-text"
-            var h = document.getElementById('selected-edit');
-            
-            // Update the content of the div to the selected flight number
-            h.innerHTML = "Flight Selection: " + flightNumber;
-        }
-        function updateRemove(flightNumber) {
-            // Get the element with the id "styled-text"
-            var h = document.getElementById('selected-remove');
-            
-            // Update the content of the div to the selected flight number
-            h.innerHTML = "Flight Selection: " + flightNumber;
-        }
-    </script>
+   
 </head>
 <body style="background-color: rgb(155, 199, 153)">
     <div>
         <h1>Holiday Hackers</h1>
         <div style="float: right">
-            <button class="navbtn" onclick="window.location.href='dest.html'">
+            <button class="navbtn" onclick="window.location.href='/dest'">
                 Destinations
             </button>
-            <button class="navbtn" onclick="window.location.href='quiz_home.html'">
+            <button class="navbtn" onclick="window.location.href='/quiz_home'">
                 Quiz
             </button>
-            <button class="navbtn" onclick="window.location.href='flights.html'">
+            <button class="navbtn" onclick="window.location.href='/flights'">
                 Flights
             </button>
         </div>
@@ -284,56 +268,43 @@
                         <th>Arrival Date</th>
                         <th>Arrival Time</th>
                     </tr>
-                    <tr>
-                        <td>Y45515</td>
-                        <td>San Antonio</td>
-                        <td>Monterrey</td>
-                        <td>Nov. 18</td>
-                        <td>1025</td>
-                        <td>Nov. 18</td>
-                        <td>1135</td>
-                    </tr>
-                    <tr>
-                        <td>WN1166</td>
-                        <td>San Antonio</td>
-                        <td>Las Vegas</td>
-                        <td>Nov. 18</td>
-                        <td>1030</td>
-                        <td>Nov. 18</td>
-                        <td>1125</td>
-                    </tr>
-                    <tr>
-                        <td>AA1523</td>
-                        <td>San Antonio</td>
-                        <td>Dallas-DFW</td>
-                        <td>Nov. 18</td>
-                        <td>1035</td>
-                        <td>Nov. 18</td>
-                        <td>1151</td>
-                    </tr>
+                    <% for (flight of allFlights){ %>
+                        <tr>
+                            <td><%= flight.flight_num %></td>
+                            <td>temp</td>
+                            <td>temp</td>
+                            <td>Nov. 18</td>
+                            <td><%= flight.depart_time %></td>
+                            <td>temp</td>
+                            <td><%= flight.arrival_time %></td>
+                        </tr>
+                        <% } %>
                 </table>
 
             </div>
             <div class="action-container">
                 <div class="action-section">
                     <h2> Add a Flight</h2>
-                    <input class="input" placeholder="Airport Code" id="aiport_code">
+                    <form id="addFlightForm" method="POST" action ="/add-flight">
+                    <input class="input" type="number" placeholder="Airport Code" id="aiport_code" name="flightNumber" required>
                     <br>
-                    <input class="input" placeholder="Departure Airport" id="d_loc">
-                    <input class="input" placeholder="Arrival Airport" id="a_loc">
+                    <input class="input" type="number" placeholder="Arrival Airport" id="a_loc" name="arrivalGate" required>
+                    <input class="input" type="number" placeholder="Departure Airport" id="d_loc" name="departGate" required>
+                    <input class="input" type="number" placeholder="Cost" id="cost" name="cost" required>
+                    <input class="input" type="number" placeholder="Duration" id="duration" name="duration" required>
                     <br>
-                    <input class="input" placeholder="Departure Date" id="d_date">
-                    <input class="input" placeholder="Arrival Date" id="a_date">
-                    
+                    <input class="input" type="text" placeholder="End City" id="end_city" name="end_city" required>
+                    <input class="input" type="text" placeholder="Start City" id="start_city" name="start_city" required>
                     <br>
                 
-                    <input class="input" placeholder="Departure Time" id="d_time">
-                    <input class="input" placeholder="Arrival Time" id="a_time">
+                    <input class="input" type="number" placeholder="Departure Time" id="d_time" name="depart_Time" required>
+                    <input class="input" type="number" placeholder="Arrival Time" id="a_time" name="arrival_Time" required>
                     <br>
                     <br>
                     <button class="navbtn">
                         Enter New Flight
                     </button>
+                </form>
                 </div>
                 <div class="action-section">
                     <h2> Edit a Flight </h2>
@@ -351,39 +322,43 @@
                             </svg>
                             </a>
                             <div class="submenu">
-                            <div class="submenu-item">
-                                <a href="#" class="submenu-link" onclick="updateEdit('Y4515')"> Y4515 </a>
-                            </div>
-                            <div class="submenu-item">
-                                <a href="#" class="submenu-link" onclick="updateEdit('WN1166')"> WN1166 </a>
-                            </div>
-                            <div class="submenu-item">
-                                <a href="#" class="submenu-link" onclick="updateEdit('AA1523')"> AA1523 </a>
-                            </div>
+                                <% for (flight of allFlights){ %>
+                                    <div class="submenu-item">
+                                        <a href="#" class="submenu-link" onclick="updateEdit('<%=flight.flight_num %>')"> <%= flight.flight_num %> </a>
+                                    </div>
+                                    <% } %>
                             </div>
                         </div>
                         </div>
                         <div class="styled-text" id="selected-edit">
                             No Flight Selected
                         </div>
-                        <input class="input" placeholder="Departure Airport" id="d_loc">
-                        <input class="input" placeholder="Arrival Airport" id="a_loc">
+                        <form id="updateFlightForm" method="POST" action ="/update-flight">
+                        <input type="hidden" name="flightNumberUpdate" id="flightNumberUpdate">
+                        <input class="input" type="number" placeholder="Arrival Airport" id="a_loc" name="arrivalGate">
+                        <input class="input" type="number" placeholder="Departure Airport" id="d_loc" name="departGate">
+                        <input class="input" type="number" placeholder="Cost" id="cost" name="cost">
+                        <input class="input" type="number" placeholder="Duration" id="duration" name="duration">
                         <br>
-                        <input class="input" placeholder="Departure Date" id="d_date">
-                        <input class="input" placeholder="Arrival Date" id="a_date">
-                        
+                        <input class="input" type="text" placeholder="End City" id="end_city" name="end_city">
+                        <input class="input" type="text" placeholder="Start City" id="start_city" name="start_city">
                         <br>
                     
-                        <input class="input" placeholder="Departure Time" id="d_time">
-                        <input class="input" placeholder="Arrival Time" id="a_time">
+                        <input class="input" type="number" placeholder="Departure Time" id="d_time" name="depart_Time">
+                        <input class="input" type="number" placeholder="Arrival Time" id="a_time" name="arrival_Time">
+                        <br>
+
                         <br>
                         <br>
                         <button class="navbtn">
                             Save Changes
                         </button>
+                    </form>
                 </div>
                 <div class="action-section">
                     <h2> Remove a Flight </h2>
+                    <form id="deleteFlightForm" method="POST" action ="/delete-flight">
+                    <input type="hidden" name="flightNumberRemove" id="flightNumberRemove">
                     <div class="menu">
                         <div class="item">
                             <a href="#" class="link">
@@ -398,29 +373,52 @@
                             </svg>
                             </a>
                             <div class="submenu">
-                            <div class="submenu-item">
-                                <a href="#" class="submenu-link" onclick="updateRemove('Y4515')"> Y4515 </a>
-                            </div>
-                            <div class="submenu-item">
-                                <a href="#" class="submenu-link" onclick="updateRemove('WN1166')"> WN1166 </a>
-                            </div>
-                            <div class="submenu-item">
-                                <a href="#" class="submenu-link" onclick="updateRemove('AA1523')"> AA1523 </a>
-                            </div>
+                                <% for (flight of allFlights){ %>
+                                    <div class="submenu-item">
+                                        <a class="submenu-link" onclick="updateRemove('<%=flight.flight_num %>')"> <%= flight.flight_num %> </a>
+                                    </div>
+                                    <% } %>
                             </div>
                         </div>
                         </div>
                         <br>
-                        <div class="styled-text" id="selected-remove">
+                        <div type="input" class="styled-text" id="selected-remove" >
                             No Flight Selected
                         </div>
                         <br>
                         <button class="navbtn">
                             Remove
                         </button>
+                    </form>
                 </div>
             </div>
         
     </div>
 </body>
+
 </html>
+
+<script>
+    // Function to update the styled-text div when a flight is selected
+    function updateEdit(flightNumber) {
+        // Get the element with the id "styled-text"
+        var h = document.getElementById('selected-edit');
+        
+        // Update the content of the div to the selected flight number
+        h.innerHTML = "Flight Selection: " + flightNumber;
+
+        var s = document.getElementById('flightNumberUpdate');
+
+        s.value = flightNumber;
+    }
+    function updateRemove(flightNumber) {
+        // Get the element with the id "styled-text"
+        var h = document.getElementById('selected-remove');
+        
+        // Update the content of the div to the selected flight number
+        h.innerHTML = "Flight Selection: " + flightNumber;
+         
+        var s = document.getElementById('flightNumberRemove')
+        s.value = flightNumber;
+    }
+</script>
