@@ -86,20 +86,17 @@ app.post('/add-flight', async (req, res) => {
   const flights = await sql`
   SELECT flight_Number FROM "Flights"
   `;
-
-  let flightNums = [];
-  for (let i = 0; i < flights.length ; i++){
-     flightNums+=(flights[i].flight_number);
-  }
-
    
+  let flightNums = [];
+  for(let i = 0; i < flights.length; i++){
+    flightNums.push((flights[i].flight_number).toString());
+  }
    if(flightNums.includes(flightNumber)){
     res.send(
-      '<script> alert("A flight already exists with this flight number. Please create a new flight number."); </script>'+
-      '<script> window.location.href = "/admin_flights"; </script>'
+     '<script> alert("A flight already exists with this flight number. Please create a new flight number."); </script>'+
+     '<script> window.location.href = "/admin_flights"; </script>'
       );
-   }
-   else {
+   } else {
     try {
     await insertFlight(flightNumber, arrivalGate, departGate, cost, duration, end_city, start_city, depart_Time, arrival_Time);
     res.send(
