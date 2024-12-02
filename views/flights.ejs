@@ -81,7 +81,7 @@
                 if (enteredPassword === "password123") {
                    // alert("Login Attempt Successful");
                     dialog.close(); // Optionally, close the dialog after success
-                    window.location.href = 'admin_flights.html';
+                    window.location.href = '/admin_flights';
                 } else {
                     alert("Invalid Credentials");
                 }
@@ -93,13 +93,13 @@
     <div>
         <h1>Holiday Hackers</h1>
         <div style="float: right">
-            <button class="navbtn" onclick="window.location.href='dest.html'">
+            <button class="navbtn" onclick="window.location.href='/dest'">
                 Destinations
             </button>
-            <button class="navbtn" onclick="window.location.href='quiz_home.html'">
+            <button class="navbtn" onclick="window.location.href='/quiz_home'">
                 Quiz
             </button>
-            <button class="navbtn" onclick="window.location.href='flights.html'">
+            <button class="navbtn" onclick="window.location.href='/flights'">
                 Flights
             </button>
         </div>
@@ -114,33 +114,19 @@
                     <th>Arrival Date</th>
                     <th>Arrival Time</th>
                 </tr>
+                    
+                    
+            <% for (flight of allFlights){ %>
                 <tr>
-                    <td>Y45515</td>
-                    <td>San Antonio</td>
-                    <td>Monterrey</td>
+                    <td><%= flight.flight_num %></td>
+                    <td>temp</td>
+                    <td>temp</td>
                     <td>Nov. 18</td>
-                    <td>1025</td>
-                    <td>Nov. 18</td>
-                    <td>1135</td>
+                    <td><%= flight.depart_time %></td>
+                    <td>temp</td>
+                    <td><%= flight.arrival_time %></td>
                 </tr>
-                <tr>
-                    <td>WN1166</td>
-                    <td>San Antonio</td>
-                    <td>Las Vegas</td>
-                    <td>Nov. 18</td>
-                    <td>1030</td>
-                    <td>Nov. 18</td>
-                    <td>1125</td>
-                </tr>
-                <tr>
-                    <td>AA1523</td>
-                    <td>San Antonio</td>
-                    <td>Dallas-DFW</td>
-                    <td>Nov. 18</td>
-                    <td>1035</td>
-                    <td>Nov. 18</td>
-                    <td>1151</td>
-                </tr>
+                <% } %>
             </table>
             <br><br>
             <button id="openDialog" class="navbtn" style="margin-left: 30%;">Administrative View</button>
