@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const { insertFlight } = require('./database/Insert');
 const { DeleteFlight } = require('./database/Delete');
 const { updateFlight } = require('./database/Update');
+const { FindDestination } = require('./database/PracticalQuiz.js');
 
 
 const app = express();
@@ -29,6 +30,11 @@ app.get('/', async (req, res) => {
 
 app.get('/quiz_home', async (req, res) => {
   res.render('quiz_home');
+}
+)
+
+app.get('/practical-quiz-results', async (req, res) => {
+  res.render('practical-quiz-results');
 }
 )
 
@@ -68,7 +74,6 @@ app.get('/admin_flights', async (req, res) => {
   const flights = await sql`
   SELECT * FROM "Flights"
 `;
-
  allFlights = [];
    for (let flight of flights){
       allFlights.push({"flight_num" : flight.flight_number, 
@@ -138,6 +143,19 @@ app.post('/delete-flight', async (req, res) => {
    } catch (error) {
     console.error('ERROR DELETING FLIGHT');
    }
+})
+
+app.post('/submit-practical-quiz', async (req, res) => {
+  const {duration, trip_type, activity, budget, distance} = req.body;
+  try {
+    let {topTwo, rest, hotel} = await FindDestination(duration, trip_type, activity, budget, distance);
+    let resta = {"name" : rest.restname, "cost": rest.restcost};
+    let hotelInfo = {"name" : hotel.hotelname, "cost": hotel.hotelcost};
+
+    res.render('practical-quiz-results', {topTwo, resta, hotelInfo});
+  } catch (error) {
+    console.error('ERROR FINDING PRACTICAL QUIZ RESULTS: ' + error);
+  }
 })
 
 app.listen(3000, function () {

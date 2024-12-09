@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+     <!-- Header Section -->
+     <div>
+        <h1>Holiday Hackers</h1>
+        <div style="float: right; margin-top: 20px;">
+            <button class="navbtn" onclick="window.location.href='/dest'">
+                Destinations
+            </button>
+            <button class="navbtn" onclick="window.location.href='/quiz_home'">
+                Quiz
+            </button>
+            <button class="navbtn" onclick="window.location.href='/flights' ">
+                Flights
+            </button>
+        </div>
+    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results from your Practical Quiz</title>
+</head>
+<body>
+
+    <header>
+        <h1>Top Destination based on your Quiz!:</h1>
+    </header>
+        <h2><%= topTwo[0].Destination %></h2>
+
+    <p>Suggested Flight number: <%= topTwo[0].FlightNumber%>  </p>
+    <p>Suggested Flight departure time: <%= topTwo[0].FlightDepart%>  </p>
+
+        <h3>Suggested Activities</h3>
+    <ul>
+        <li><%= topTwo[0].ActivityName %>   cost: <%=topTwo[0].ActivityCost%></li>
+    </ul>
+        <h3>Recommended Hotel</h3>
+    <ul>
+        <li><%= hotelInfo.name%>  cost: <%= hotelInfo.cost %></li>
+    </ul>
+        <h3>Recommended Restauraunt</h3>
+    <ul>
+        <li><%=resta.name%>   cost: <%= resta.cost%></li>
+    </ul>
+
+
+</body>
+</html>
