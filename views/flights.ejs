@@ -107,26 +107,24 @@
             <table>
                 <tr>
                     <th>Flight Number</th>
-                    <th>Departure Gate</th>
-                    <th>Destination Gate</th>
+                    <th>Departure Airport</th>
+                    <th>Destination Airport</th>
                     <th>Departure Date</th>
                     <th>Departure Time</th>
                     <th>Arrival Date</th>
                     <th>Arrival Time</th>
-                    <th>Duration</th>
-                    <th> Cost</th>
                 </tr>
-                <% for (flight of allFlights){ %>
-                    <tr>
-                        <td><%= flight.flight_num %></td>
-                        <td><%= flight.depart_gate %></td>
-                        <td><%= flight.arrive_gate %></td>
-                        <td>Dec. 9th</td>
-                        <td><%= flight.depart_time %></td>
-                        <td>Dec. 9th</td>
-                        <td><%= flight.arrival_time %></td>
-                        <td><%= flight.duration %></td>
-                        <td><%= flight.cost %></td>
+                    
+                    
+            <% for (flight of allFlights){ %>
+                <tr>
+                    <td><%= flight.flight_num %></td>
+                    <td>temp</td>
+                    <td>temp</td>
+                    <td>Nov. 18</td>
+                    <td><%= flight.depart_time %></td>
+                    <td>temp</td>
+                    <td><%= flight.arrival_time %></td>
                 </tr>
                 <% } %>
             </table>
