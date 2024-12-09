@@ -261,22 +261,30 @@
                 <table>
                     <tr>
                         <th>Flight Number</th>
-                        <th>Departure Airport</th>
-                        <th>Destination Airport</th>
+                        <th>Departure Gate</th>
+                        <th>Destination Gate</th>
                         <th>Departure Date</th>
                         <th>Departure Time</th>
                         <th>Arrival Date</th>
                         <th>Arrival Time</th>
+                        <th>Duration</th>
+                        <th> Cost</th>
+                        <th> Destination</th>
+                        <th> Departing City</th>
                     </tr>
                     <% for (flight of allFlights){ %>
                         <tr>
                             <td><%= flight.flight_num %></td>
-                            <td>temp</td>
-                            <td>temp</td>
-                            <td>Nov. 18</td>
+                            <td><%= flight.depart_gate %></td>
+                            <td><%= flight.arrive_gate %></td>
+                            <td>Dec. 9th</td>
                             <td><%= flight.depart_time %></td>
-                            <td>temp</td>
+                            <td>Dec. 9th</td>
                             <td><%= flight.arrival_time %></td>
+                            <td><%= flight.duration %></td>
+                            <td><%= flight.cost %></td>
+                            <td><%= flight.end_city %></td>
+                            <td><%= flight.start_city %></td>
                         </tr>
                         <% } %>
                 </table>
@@ -288,8 +296,8 @@
                     <form id="addFlightForm" method="POST" action ="/add-flight">
                     <input class="input" type="number" placeholder="Airport Code" id="aiport_code" name="flightNumber" required>
                     <br>
-                    <input class="input" type="number" placeholder="Arrival Airport" id="a_loc" name="arrivalGate" required>
-                    <input class="input" type="number" placeholder="Departure Airport" id="d_loc" name="departGate" required>
+                    <input class="input" type="number" placeholder="Arrival Gate" id="a_loc" name="arrivalGate" required>
+                    <input class="input" type="number" placeholder="Departure Gate" id="d_loc" name="departGate" required>
                     <input class="input" type="number" placeholder="Cost" id="cost" name="cost" required>
                     <input class="input" type="number" placeholder="Duration" id="duration" name="duration" required>
                     <br>
@@ -335,8 +343,8 @@
                         </div>
                         <form id="updateFlightForm" method="POST" action ="/update-flight">
                         <input type="hidden" name="flightNumberUpdate" id="flightNumberUpdate">
-                        <input class="input" type="number" placeholder="Arrival Airport" id="a_loc" name="arrivalGate">
-                        <input class="input" type="number" placeholder="Departure Airport" id="d_loc" name="departGate">
+                        <input class="input" type="number" placeholder="Arrival Gate" id="a_loc" name="arrivalGate">
+                        <input class="input" type="number" placeholder="Departure Gate" id="d_loc" name="departGate">
                         <input class="input" type="number" placeholder="Cost" id="cost" name="cost">
                         <input class="input" type="number" placeholder="Duration" id="duration" name="duration">
                         <br>

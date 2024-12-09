@@ -62,7 +62,7 @@ app.get('/flights', async (req, res) => {
    for (let flight of flights){
       allFlights.push({"flight_num" : flight.flight_number, 
         "arrive_gate": flight.arrive_gate, "depart_gate": flight.depart_gate, "cost":  flight.cost, "duration": flight.duration,
-        "depart_time": flight.depart_time, "arrival_time": flight.arrival_time})
+        "depart_time": flight.depart_time, "arrival_time": flight.arrival_time, "start-city": flight.start_city, "end-city": flight.end_city})
        
       }
   res.render('flights', {allFlights});
@@ -78,7 +78,7 @@ app.get('/admin_flights', async (req, res) => {
    for (let flight of flights){
       allFlights.push({"flight_num" : flight.flight_number, 
         "arrive_gate": flight.arrive_gate, "depart_gate": flight.depart_gate, "cost":  flight.cost, "duration": flight.duration,
-        "depart_time": flight.depart_time, "arrival_time": flight.arrival_time})
+        "depart_time": flight.depart_time, "arrival_time": flight.arrival_time, "start-city": flight.start_city, "end-city": flight.end_city})
        
       }
   res.render('admin_flights');
