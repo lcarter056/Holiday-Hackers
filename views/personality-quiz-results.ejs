@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+     <!-- Header Section -->
+     <div>
+        <h1>Holiday Hackers</h1>
+        <div style="float: right; margin-top: 20px;">
+            <button class="navbtn" onclick="window.location.href='/dest'">
+                Destinations
+            </button>
+            <button class="navbtn" onclick="window.location.href='/quiz_home'">
+                Quiz
+            </button>
+            <button class="navbtn" onclick="window.location.href='/flights' ">
+                Flights
+            </button>
+        </div>
+    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results from your Personality Quiz</title>
+</head>
+<body>
+    <header>
+        <h1>Top Destination based on your Quiz!:</h1>
+    </header>
+        <h2><%= bestMatch %></h2>
+
+</body>
+</html>

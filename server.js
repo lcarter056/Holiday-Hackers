@@ -6,6 +6,7 @@ const { insertFlight } = require('./database/Insert');
 const { DeleteFlight } = require('./database/Delete');
 const { updateFlight } = require('./database/Update');
 const { FindDestination } = require('./database/PracticalQuiz.js');
+const { NewDestination } = require('./database/PersonalityQuiz.js');
 
 
 const app = express();
@@ -35,6 +36,11 @@ app.get('/quiz_home', async (req, res) => {
 
 app.get('/practical-quiz-results', async (req, res) => {
   res.render('practical-quiz-results');
+}
+)
+
+app.get('/personality-quiz-results', async (req, res) => {
+  res.render('personality-quiz-results');
 }
 )
 
@@ -157,6 +163,27 @@ app.post('/submit-practical-quiz', async (req, res) => {
     console.error('ERROR FINDING PRACTICAL QUIZ RESULTS: ' + error);
   }
 })
+
+app.post('/submit-personality-quiz', async (req, res) => {
+  const { color, drink, superpower, element, food } = req.body;
+  console.log(req.body);
+  try {
+    const matchedDestination = await NewDestination(
+      color,
+      drink,
+      superpower,
+      element,
+      food
+    );
+    res.render('personality-quiz-results', { bestMatch: matchedDestination });
+  } catch (error) {
+    console.error('Error processing results:', error);
+    res.render('personality-quiz-results', { bestMatch: 'No match found' });
+  }
+});
+
+
+
 
 app.listen(3000, function () {
     console.log('Server is listening on port 3000');
