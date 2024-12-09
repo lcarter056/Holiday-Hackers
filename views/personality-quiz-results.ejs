@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body {
+background-color: rgb(155, 199, 153);
+
+}
+
+
+/* Styling for navigation buttons */
+.navbtn {
+background-color: rgb(227, 161, 197);
+background-image: none;
+color: #fff;
+cursor: pointer;
+font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+font-size: 100%;
+font-weight: 900;
+line-height: 1.5;
+margin: 0;
+padding: 0;
+text-transform: uppercase;
+border-radius: 99rem;
+border-width: 2px;
+padding: 0.8rem 3rem;
+}
+.navbtn:hover {
+background-color: rgb(237, 197, 219);
+}
+
+/* Centered content for radio buttons and label */
+.center-container {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh; /* Full viewport height */
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+flex-direction: column;
+
+}
+/* From Uiverse.io by gharsh11032000 */ 
+.card {
+width: 500px;
+height: 400px;
+background-color: #4158D0;
+background-image: linear-gradient(43deg, #e3399f 0%, #f092ca 46%, #ffcfec 100%);
+border-radius: 8px;
+color: white;
+overflow: hidden;
+position: relative;
+transform-style: preserve-3d;
+perspective: 1000px;
+transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+cursor: pointer;
+}
+
+.card-content {
+padding: 10px;
+position: relative;
+z-index: 1;
+display: flex;
+flex-direction: column;
+gap: 5px;
+color: white;
+align-items: center;
+justify-content: center;
+text-align: center;
+height: 100%;
+}
+
+.card-content .card-title {
+font-size: 24px;
+font-weight: 700;
+color: inherit;
+text-transform: uppercase;
+/* margin-bottom: -5%;
+ padding-top: 10%; */
+}
+
+.card-content .card-para {
+
+color: inherit;
+opacity: 0.8;
+font-size: 14px;
+}
+
+.card:hover {
+transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+z-index: 1;
+}
+
+.card:hover:before {
+transform: translateX(-100%);
+}
+
+.card:after {
+content: "";
+position: absolute;
+top: 0;
+right: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+z-index: 1;
+}
+
+.card:hover:after {
+transform: translateX(100%);
+}
+
+
+
+
+
+
+
+</style>
+     <!-- Header Section -->
+     <div>
+        <h1>Holiday Hackers</h1>
+        <div style="float: right; margin-top: 20px;">
+            <button class="navbtn" onclick="window.location.href='/dest'">
+                Destinations
+            </button>
+            <button class="navbtn" onclick="window.location.href='/quiz_home'">
+                Quiz
+            </button>
+            <button class="navbtn" onclick="window.location.href='/flights' ">
+                Flights
+            </button>
+        </div>
+    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results from your Personality Quiz</title>
+</head>
+<body>
+    <!--
+    <header>
+        <h1>Top Destination based on your Quiz!:</h1>
+    </header>
+
+        <h2><%= bestMatch %></h2>
+-->
+<div class="center-container">
+    <!--    <header>
+            <h1>Top Destination based on your Quiz!:</h1>
+        </header>
+    -->
+        <br>
+
+    <div class="card" style="margin-top: 30%;">
+    <div class="card-content" style="margin-bottom: 10%;" onclick="window.location.href='/dest' ">
+        <p class="card-title"><%= bestMatch %></p>
+    </div>
+    </div>
+    </div>
+
+</body>
+</html>
