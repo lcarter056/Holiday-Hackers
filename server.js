@@ -11,9 +11,6 @@ const { NewDestination } = require('./database/PersonalityQuiz.js');
 
 const app = express();
 
-//app.use(express.static('public'));
-//app.use('./assets', express.static('images'));
-
 const { neon } = require("@neondatabase/serverless");
 
 const sql = neon("postgresql://HolidayHackers_owner:r6WSgcZ5bXuE@ep-snowy-bush-a5jfjett.us-east-2.aws.neon.tech/HolidayHackers?sslmode=require");
@@ -28,7 +25,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 app.get('/', async (req, res) => {
-  res.render('dest');
+  res.render('index');
 }
 )
 
