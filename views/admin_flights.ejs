@@ -269,8 +269,6 @@
                         <th>Arrival Time</th>
                         <th>Duration</th>
                         <th> Cost</th>
-                        <th> Destination</th>
-                        <th> Departing City</th>
                     </tr>
                     <% for (flight of allFlights){ %>
                         <tr>
@@ -283,8 +281,6 @@
                             <td><%= flight.arrival_time %></td>
                             <td><%= flight.duration %></td>
                             <td><%= flight.cost %></td>
-                            <td><%= flight.end_city %></td>
-                            <td><%= flight.start_city %></td>
                         </tr>
                         <% } %>
                 </table>
